@@ -30,7 +30,9 @@ public class CustomerAggregate {
 
     @JsonSetter("addresses")
     public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
+        if (this.addresses.isEmpty()) {
+            this.addresses.addAll(addresses);
+        }
     }
 
     public List<Order> getOrders() {
@@ -39,7 +41,9 @@ public class CustomerAggregate {
 
     @JsonSetter("orders")
     public void setOrders(List<Order> orders) {
-        this.orders = orders;
+        if (this.orders.isEmpty()) {
+            this.orders.addAll(orders);
+        }
     }
 
     @Override
